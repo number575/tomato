@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ул. „Цар Шишман“ - за тиха нощ</title>
+<meta name="description" content="Гражданска инициатива на живущите около ул. „Цар Шишман“, София, за прекратяване на незаконното нощно озвучаване на открити площи. Научи как да подадеш сигнал.">
+<meta property="og:title" content="ул. „Цар Шишман“ - за тиха нощ">
+<meta property="og:description" content="Между 23:00 и 07:00 озвучаването на открити тераси в жилищна зона е забранено със закон. Как да подадеш сигнал.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,500;0,600;0,700;1,500&family=Golos+Text:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E1428;        /* night indigo */
+    --ink-2:#161F3D;      /* panel */
+    --night:#1B2547;
+    --haze:#7C88A8;       /* muted slate text */
+    --haze-2:#A6B0C9;
+    --line:#28324F;
+    --paper:#F4F2EB;      /* warm civic paper */
+    --paper-2:#ECE9DE;
+    --ink-on-paper:#1A2138;
+    --quiet:#E8B23A;      /* the warm lamp — protected quiet */
+    --quiet-soft:#F2D38C;
+    --breach:#B6522F;     /* muted brick — the violation, desaturated on purpose */
+    --focus:#9CC2FF;
+    --maxw:1080px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{
+    margin:0;background:var(--ink);color:#EAEDF6;
+    font-family:"Golos Text",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  h1,h2,h3{font-family:"Spectral",Georgia,serif;font-weight:600;line-height:1.12;margin:0}
+  a{color:inherit}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .mono{font-family:"JetBrains Mono",ui-monospace,monospace;font-variant-ligatures:none}
+  .eyebrow{
+    font-family:"JetBrains Mono",monospace;font-size:12.5px;font-weight:500;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--quiet);
+  }
+
+  /* ---- top bar ---- */
+  header{position:sticky;top:0;z-index:50;background:rgba(14,20,40,.82);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .bar{display:flex;align-items:center;gap:20px;height:60px}
+  .brand{font-family:"Spectral",serif;font-weight:600;font-size:17px;letter-spacing:.01em;white-space:nowrap}
+  .brand b{color:var(--quiet);font-weight:600}
+  nav{margin-left:auto;display:flex;align-items:center;gap:26px}
+  nav a{font-size:14.5px;color:var(--haze-2);text-decoration:none;transition:color .18s}
+  nav a:hover{color:#fff}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;border:0;cursor:pointer;
+    font-family:"Golos Text",sans-serif;font-weight:600;font-size:15px;
+    padding:11px 18px;border-radius:999px;text-decoration:none;transition:transform .15s,box-shadow .2s,background .2s;
+  }
+  .btn-primary{background:var(--quiet);color:#241803;box-shadow:0 0 0 0 rgba(232,178,58,.5)}
+  .btn-primary:hover{transform:translateY(-1px);box-shadow:0 8px 26px -8px rgba(232,178,58,.6)}
+  .btn-ghost{background:transparent;color:#EAEDF6;border:1px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--quiet);color:#fff}
+  .nav-cta{padding:8px 15px;font-size:14px}
+  @media(max-width:860px){nav .navlink{display:none}}
+
+  /* ---- hero ---- */
+  .hero{position:relative;overflow:hidden;padding:74px 0 64px;
+    background:
+      radial-gradient(120% 90% at 88% -10%, rgba(232,178,58,.13), transparent 55%),
+      radial-gradient(80% 70% at 10% 110%, rgba(40,57,110,.45), transparent 60%);
+  }
+  .hero .eyebrow{margin-bottom:20px;display:block}
+  .hero h1{font-size:clamp(40px,7.2vw,76px);font-weight:700;letter-spacing:-.012em;max-width:14ch}
+  .hero h1 .em{color:var(--quiet)}
+  .lede{margin:22px 0 0;max-width:60ch;color:var(--haze-2);font-size:clamp(16.5px,2.1vw,19px)}
+  .lede b{color:#EAEDF6;font-weight:600}
+  .cta-row{display:flex;flex-wrap:wrap;gap:13px;margin-top:30px}
+
+  /* ---- signature: quiet-window clock ---- */
+  .clock{margin:48px 0 4px;border:1px solid var(--line);border-radius:18px;
+    background:linear-gradient(180deg,rgba(27,37,71,.55),rgba(14,20,40,.2));padding:26px 24px 18px}
+  .clock-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:6px;flex-wrap:wrap}
+  .clock-head .t{font-family:"Spectral",serif;font-size:18px;color:#EAEDF6}
+  .clock-head .law{font-family:"JetBrains Mono",monospace;font-size:12.5px;color:var(--quiet);letter-spacing:.04em}
+  .clock svg{display:block;width:100%;height:auto}
+  .legend{display:flex;gap:22px;flex-wrap:wrap;margin-top:12px;font-size:13.5px;color:var(--haze-2)}
+  .legend span{display:inline-flex;align-items:center;gap:8px}
+  .sw{width:13px;height:13px;border-radius:3px;display:inline-block}
+
+  /* ---- generic section ---- */
+  section{padding:78px 0}
+  .sec-paper{background:var(--paper);color:var(--ink-on-paper)}
+  .sec-dark2{background:var(--ink-2)}
+  .sec-paper .eyebrow{color:var(--breach)}
+  .sec-paper h2{color:var(--ink-on-paper)}
+  .kicker{display:block;margin-bottom:14px}
+  h2{font-size:clamp(28px,4.4vw,42px);letter-spacing:-.01em}
+  .sec-intro{max-width:62ch;margin:18px 0 0;color:var(--haze)}
+  .sec-paper .sec-intro{color:#4A5168}
+  .lead-col{max-width:64ch}
+  .lead-col p{margin:0 0 16px}
+  .sec-paper .lead-col p{color:#34394C}
+
+  /* ---- law callout ---- */
+  .callout{margin:30px 0 0;border-left:4px solid var(--breach);
+    background:#fff;border-radius:0 14px 14px 0;padding:24px 26px;
+    box-shadow:0 18px 40px -28px rgba(26,33,56,.5)}
+  .callout .q{font-family:"Spectral",serif;font-size:clamp(19px,2.6vw,24px);font-weight:600;
+    line-height:1.32;color:var(--ink-on-paper);margin:0}
+  .callout .src{display:block;margin-top:14px;font-family:"JetBrains Mono",monospace;
+    font-size:12.5px;color:#6A7088;letter-spacing:.02em}
+  .norms{list-style:none;padding:0;margin:34px 0 0;display:grid;gap:1px;background:var(--paper-2);
+    border:1px solid var(--paper-2);border-radius:14px;overflow:hidden}
+  .norms li{background:var(--paper);padding:18px 22px;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start}
+  .norms .ref{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--breach);font-weight:500;white-space:nowrap;padding-top:2px}
+  .norms .d{color:#3C4257;font-size:15.5px;line-height:1.5}
+
+  /* ---- timeline (record) ---- */
+  .tl{margin-top:40px;position:relative;padding-left:0}
+  .tl-item{display:grid;grid-template-columns:84px 1fr;gap:24px;padding:0 0 8px}
+  .tl-year{font-family:"Spectral",serif;font-size:30px;font-weight:700;color:var(--quiet);
+    text-align:right;padding-top:14px;position:relative}
+  .tl-body{border-left:1px solid var(--line);padding:14px 0 34px 26px;position:relative}
+  .tl-body::before{content:"";position:absolute;left:-6.5px;top:21px;width:12px;height:12px;
+    border-radius:50%;background:var(--quiet);box-shadow:0 0 0 4px var(--ink)}
+  .tl-item:last-child .tl-body{padding-bottom:4px}
+  .tl-body h3{font-family:"Golos Text",sans-serif;font-weight:600;font-size:18px;margin-bottom:8px;color:#fff}
+  .tl-body p{margin:0;color:var(--haze-2);font-size:15.5px}
+  .tl-body .refs{margin-top:12px;display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--haze-2);
+    border:1px solid var(--line);border-radius:6px;padding:4px 9px;background:rgba(27,37,71,.4)}
+
+  /* ---- steps ---- */
+  .steps{margin-top:38px;display:grid;gap:0;counter-reset:s}
+  .step{display:grid;grid-template-columns:54px 1fr;gap:22px;padding:22px 0;border-top:1px solid var(--line)}
+  .step:first-child{border-top:0}
+  .step .n{counter-increment:s;font-family:"JetBrains Mono",monospace;font-size:15px;
+    color:var(--quiet);padding-top:3px}
+  .step .n::before{content:counter(s,decimal-leading-zero)}
+  .step h3{font-family:"Golos Text",sans-serif;font-weight:600;font-size:18px;color:#fff;margin-bottom:5px}
+  .step p{margin:0;color:var(--haze-2);font-size:15.5px}
+  .step p b{color:#EAEDF6}
+
+  /* ---- contacts ---- */
+  .cards{margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+  .card{border:1px solid var(--line);border-radius:14px;padding:22px;background:linear-gradient(180deg,rgba(27,37,71,.4),transparent)}
+  .card .k{font-family:"JetBrains Mono",monospace;font-size:11.5px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--haze);margin-bottom:10px}
+  .card .name{font-family:"Spectral",serif;font-size:19px;color:#fff;margin-bottom:10px}
+  .card .num{font-family:"JetBrains Mono",monospace;font-size:18px;color:var(--quiet);font-weight:500}
+  .card .meta{margin-top:8px;font-size:14px;color:var(--haze-2);line-height:1.5}
+  .card a{color:var(--quiet-soft);text-decoration:none;border-bottom:1px solid transparent}
+  .card a:hover{border-color:var(--quiet-soft)}
+  .card.urgent{border-color:#3a2a2a;background:linear-gradient(180deg,rgba(182,82,47,.14),transparent)}
+  .card.urgent .num{color:#E8845F}
+
+  /* ---- viber ---- */
+  .viber{background:var(--paper);color:var(--ink-on-paper)}
+  .viber .eyebrow{color:var(--breach)}
+  .viber-grid{display:grid;grid-template-columns:1fr auto;gap:46px;align-items:center}
+  .viber h2{color:var(--ink-on-paper)}
+  .viber p{color:#3C4257;max-width:46ch;margin:16px 0 0}
+  .viber .grp{margin-top:8px;font-family:"Spectral",serif;font-size:21px;color:var(--ink-on-paper)}
+  .viber .btn-primary{margin-top:26px}
+  .qr{background:#fff;border:1px solid #DAD4C4;border-radius:18px;padding:18px;box-shadow:0 22px 50px -28px rgba(26,33,56,.55);text-align:center}
+  .qr img{width:188px;height:188px;display:block}
+  .qr .cap{margin-top:10px;font-family:"JetBrains Mono",monospace;font-size:11.5px;letter-spacing:.1em;
+    text-transform:uppercase;color:#6A7088}
+  @media(max-width:680px){.viber-grid{grid-template-columns:1fr;justify-items:start}}
+
+  /* ---- footer ---- */
+  footer{border-top:1px solid var(--line);padding:46px 0 56px;color:var(--haze);font-size:14px}
+  footer .f-top{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:baseline}
+  footer .brand{font-size:16px}
+  footer p{max-width:64ch;margin:18px 0 0;line-height:1.6}
+  footer .fineprint{margin-top:20px;font-size:12.5px;color:#5C667F}
+
+  :focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:4px}
+
+  /* reveal */
+  .rev{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+  .rev.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.rev{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <span class="brand">ул. „Цар Шишман“ · <b>тиха нощ</b></span>
+    <nav>
+      <a class="navlink" href="#situaciya">Ситуацията</a>
+      <a class="navlink" href="#zakon">Законът</a>
+      <a class="navlink" href="#zapis">Какво е направено</a>
+      <a class="navlink" href="#signal">Подай сигнал</a>
+      <a class="navlink" href="https://invite.viber.com/?g=mDU1eUC_sFa_mo-HbvTp4nPNOjuzktzj" target="_blank" rel="noopener">Viber групата</a>
+      <a class="btn btn-primary nav-cta" href="#signal">Подай сигнал</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Гражданска инициатива · ул. „Цар Шишман“ № 24, район „Средец“, София</span>
+    <h1>Нощта е за сън, <span class="em">не за тонколони.</span></h1>
+    <p class="lede">Клуб „Phi“ озвучава откритата си тераса до около <b>04:00 ч.</b> Между 23:00 и 07:00 ч. озвучаването на открити площи в жилищна зона е <b>забранено със закон</b> — независимо от работното време на закритата част.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#signal">Подай сигнал →</a>
+      <a class="btn btn-ghost" href="https://invite.viber.com/?g=mDU1eUC_sFa_mo-HbvTp4nPNOjuzktzj" target="_blank" rel="noopener">Влез във Viber групата</a>
+    </div>
+
+    <!-- SIGNATURE: protected quiet window -->
+    <div class="clock rev">
+      <div class="clock-head">
+        <span class="t">Защитената нощна тишина</span>
+        <span class="law">чл. 16а · Закон за защита от шума</span>
+      </div>
+      <svg viewBox="0 0 920 168" role="img" aria-label="Времева ос: между 23:00 и 07:00 ч. озвучаването на откритите площи е забранено; шумът от заведението реално продължава до около 04:00 ч.">
+        <defs>
+          <linearGradient id="quietg" x1="0" x2="1" y1="0" y2="0">
+            <stop offset="0" stop-color="#E8B23A" stop-opacity=".95"/>
+            <stop offset="1" stop-color="#F2D38C" stop-opacity=".9"/>
+          </linearGradient>
+          <pattern id="hatch" width="9" height="9" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+            <rect width="9" height="9" fill="transparent"/>
+            <line x1="0" y1="0" x2="0" y2="9" stroke="#B6522F" stroke-width="3.4" opacity=".9"/>
+          </pattern>
+        </defs>
+        <!-- baseline -->
+        <line x1="40" y1="118" x2="880" y2="118" stroke="#28324F" stroke-width="1.5"/>
+        <!-- protected band 23:00 -> 07:00 (x 380 -> 880) -->
+        <rect x="380" y="60" width="500" height="34" rx="7" fill="url(#quietg)"/>
+        <text x="630" y="82" text-anchor="middle" font-family="Golos Text, sans-serif" font-size="15" font-weight="600" fill="#241803">тишина по закон · 23:00–07:00</text>
+        <!-- breach overlay 23:00 -> ~04:00 (x 380 -> 567) -->
+        <rect x="380" y="60" width="187" height="34" rx="7" fill="url(#hatch)"/>
+        <rect x="380" y="60" width="187" height="34" rx="7" fill="none" stroke="#B6522F" stroke-width="1.5"/>
+        <text x="473" y="44" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12.5" fill="#C9694A">шумът продължава ~04:00</text>
+        <path d="M473 48 L473 58" stroke="#B6522F" stroke-width="1.4"/>
+        <!-- ticks -->
+        <g font-family="JetBrains Mono, monospace" font-size="12.5" fill="#7C88A8" text-anchor="middle">
+          <g stroke="#28324F" stroke-width="1.2">
+            <line x1="40" y1="114" x2="40" y2="124"/>
+            <line x1="180" y1="114" x2="180" y2="124"/>
+            <line x1="380" y1="110" x2="380" y2="126"/>
+            <line x1="567" y1="114" x2="567" y2="124"/>
+            <line x1="880" y1="110" x2="880" y2="126"/>
+          </g>
+          <text x="40" y="144">19:00</text>
+          <text x="180" y="144">21:00</text>
+          <text x="380" y="144" fill="#E8B23A">23:00</text>
+          <text x="567" y="144">04:00</text>
+          <text x="880" y="144" fill="#E8B23A">07:00</text>
+        </g>
+      </svg>
+      <div class="legend">
+        <span><i class="sw" style="background:linear-gradient(90deg,#E8B23A,#F2D38C)"></i>тишина, гарантирана от закона</span>
+        <span><i class="sw" style="background:repeating-linear-gradient(45deg,#B6522F 0 3px,transparent 3px 7px);border:1px solid #B6522F"></i>наблюдаваното нарушение</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SITUATION -->
+<section id="situaciya" class="sec-paper">
+  <div class="wrap">
+    <span class="eyebrow kicker">Ситуацията</span>
+    <h2>Десетки семейства не могат да спят.</h2>
+    <div class="lead-col">
+      <p class="sec-intro">Клуб „Phi“ (ул. „Цар Шишман“ № 24) разполага с открита лятна тераса/двор. През топлите месеци вратите и прозорците се отварят и откритата площ се озвучава с музика, която продължава до около 04:00 ч.</p>
+      <p>Нискочестотният звук прониква в жилищата на околните сгради — дотолкова, че мебели и легла вибрират, а сънят става невъзможен. До ранните сутрешни часове във вътрешния двор се събират посетители, чийто шум се разнася между жилищните блокове.</p>
+      <p>През почивните дни музиката е силна и денем — чува се отчетливо в жилищата дори при напълно затворени прозорци. Проблемът е системен и продължава от години.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LAW -->
+<section id="zakon">
+  <div class="wrap">
+    <span class="eyebrow kicker">Защо е незаконно</span>
+    <h2>Удълженото работно време не покрива откритата тераса.</h2>
+    <p class="sec-intro">Това е най-важната точка. Дори заведението да има утвърдено удължено работно време, то се отнася единствено за <b style="color:#EAEDF6">закритата част</b>. Озвучаването на откритите площи в нощните часове остава забранено.</p>
+
+    <div class="callout">
+      <p class="q">„Удълженото работно време се отнася единствено за закритата част и изключва озвучаване и използване на откритите части към обектите.“</p>
+      <span class="src">— от писмо на Столична община до СДВР, рег. № СФИ26-ДИ01-176 / 18.06.2026 г.</span>
+    </div>
+
+    <ul class="norms">
+      <li><span class="ref">чл. 16а, ал. 2</span><span class="d"><b>Закон за защита от шума в околната среда</b> — забрана за озвучаване на открити площи на заведения в жилищна зона между 23:00 и 07:00 ч.</span></li>
+      <li><span class="ref">чл. 4в</span><span class="d"><b>Наредба за търговската дейност на територията на СО</b> — забрана за маси и столове на открито преди 7:00 ч. и след 22:00 ч., респ. 23:00 ч.</span></li>
+      <li><span class="ref">Наредба</span><span class="d"><b>Наредба за обществения ред на територията на СО</b> — в частта за обществения ред и нощната тишина.</span></li>
+      <li><span class="ref">Наредба № 6 / 2006</span><span class="d"><b>Гранични стойности за шум</b> — вкл. нормите за проникващ шум в помещенията на жилищни сгради.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- RECORD -->
+<section id="zapis" class="sec-dark2">
+  <div class="wrap">
+    <span class="eyebrow kicker">Какво вече е направено</span>
+    <h2 style="color:#fff">Случаят е официално документиран.</h2>
+    <p class="sec-intro">Нарушенията не са просто оплакване — те са установени от институциите, с актове и преписки. Това е публичната хронология.</p>
+
+    <div class="tl">
+      <div class="tl-item rev">
+        <div class="tl-year">2025</div>
+        <div class="tl-body">
+          <h3>Проверки на МВР, съставени актове, преписки до прокуратурата</h3>
+          <p>По сигнали през Контактния център на Столична община, насочени към МВР-СДВР, 01 РУ-СДВР извърши системни проверки в различни часови диапазони. Установени са нарушения на работното време и на тишината, включително след 22:00 ч. Съставени са актове за установяване на административно нарушение (АУАН), обектът е включен в системни нощни проверки, а преписките са изпратени на Софийска районна прокуратура.</p>
+          <div class="refs">
+            <span class="chip">СОА25-КЦ01-56166</span>
+            <span class="chip">СОА25-КЦ01-56187</span>
+            <span class="chip">01 РУ-СДВР · АУАН</span>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item rev">
+        <div class="tl-year">2026</div>
+        <div class="tl-body">
+          <h3>Нов сигнал, насочен към СДВР и към район „Средец“</h3>
+          <p>Нарушенията продължават. Подаден е нов сигнал през Контактния център, който Столична община насочи както към СДВР, така и към район „Средец“. Подадени са и жалби до Столичен инспекторат и до кмета на район „Средец“, с искане за внезапни нощни проверки и официално измерване на нивата на шума.</p>
+          <div class="refs">
+            <span class="chip">СОА26-КЦ01-65978</span>
+            <span class="chip">СДВР · СФИ26-ДИ01-176</span>
+            <span class="chip">Средец · СФИ26-ВК08-790</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIGNAL / HOW TO -->
+<section id="signal">
+  <div class="wrap">
+    <span class="eyebrow kicker">Подай сигнал</span>
+    <h2>Всеки сигнал тежи. Ето как се прави правилно.</h2>
+    <p class="sec-intro">Силата е в системността и в документирането. Един сигнал с входящ номер струва повече от десет обаждания без следа.</p>
+
+    <div class="steps">
+      <div class="step"><span class="n"></span><div><h3>Запиши датата и часа</h3><p>В момента, в който чуеш нарушението — отбележи точните дата и час. Това е основата на всяко доказателство.</p></div></div>
+      <div class="step"><span class="n"></span><div><h3>Обади се веднага</h3><p><b>Столичен инспекторат — 02 / 987 5555</b> (денонощно). При нужда — <b>112</b>.</p></div></div>
+      <div class="step"><span class="n"></span><div><h3>Подай писмен сигнал</h3><p>През <b>call.sofia.bg</b> опиши нарушението (дата, час, адрес) и <b>поискай входящ номер</b>.</p></div></div>
+      <div class="step"><span class="n"></span><div><h3>Запази входящия номер</h3><p>Запиши номера на преписката. Той свързва сигнала ти с цялата документирана история на случая.</p></div></div>
+      <div class="step"><span class="n"></span><div><h3>Сподели във Viber групата</h3><p>Качи датата, часа и входящия номер в групата на съседите — така системността става видима за институциите.</p></div></div>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="k">Денонощно</div>
+        <div class="name">Столичен инспекторат</div>
+        <div class="num">02 / 987 5555</div>
+        <div class="meta"><a href="mailto:inspectorat@inspectorat-so.org">inspectorat@inspectorat-so.org</a><br>ул. „Париж“ № 5</div>
+      </div>
+      <div class="card">
+        <div class="k">08:00–20:00 · раб. дни</div>
+        <div class="name">СРЗИ</div>
+        <div class="num">0889 822 626</div>
+        <div class="meta">Столична регионална здравна инспекция</div>
+      </div>
+      <div class="card">
+        <div class="k">Писмен сигнал · входящ номер</div>
+        <div class="name">Контактен център на СО</div>
+        <div class="num"><a href="https://call.sofia.bg" target="_blank" rel="noopener">call.sofia.bg</a></div>
+        <div class="meta">Онлайн подаване и проследяване</div>
+      </div>
+      <div class="card urgent">
+        <div class="k">Спешно</div>
+        <div class="name">Спешен телефон</div>
+        <div class="num">112</div>
+        <div class="meta">При нарушение в момента</div>
+      </div>
+      <div class="card">
+        <div class="k">Местен контрол</div>
+        <div class="name">Районен инспекторат „Средец“</div>
+        <div class="num">02 / 980 09 41</div>
+        <div class="meta">ул. „Христо Белчев“ № 1, ст. 11<br>приемно: 08:30–09:30 и 15:00–17:00</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIBER -->
+<section class="viber">
+  <div class="wrap viber-grid">
+    <div>
+      <span class="eyebrow kicker">Заедно</span>
+      <h2>Включи се във Viber групата на съседите.</h2>
+      <p>Координираме сигналите, споделяме входящи номера и следим резултатите. Колкото повече сме, толкова по-трудно е случаят да бъде подминат.</p>
+      <div class="grp">„Цар Шишман — срещу нощния шум“</div>
+      <a class="btn btn-primary" href="https://invite.viber.com/?g=mDU1eUC_sFa_mo-HbvTp4nPNOjuzktzj" target="_blank" rel="noopener">Влез в групата →</a>
+    </div>
+    <div class="qr">
+      <img src="data:image/png;base64,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" alt="QR код за вход във Viber групата">
+      <div class="cap">Сканирай за вход</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="f-top">
+      <span class="brand">ул. „Цар Шишман“ · <b style="color:var(--quiet)">тиха нощ</b></span>
+      <a class="navlink" href="#signal" style="color:var(--quiet-soft);text-decoration:none">Подай сигнал ↑</a>
+    </div>
+    <p>Гражданска инициатива на живущите около ул. „Цар Шишман“, район „Средец“, София. Информацията се основава на проверими факти и на официални входящи номера от преписки на Столична община и МВР-СДВР.</p>
+    <p class="fineprint">Връзка и координация — чрез Viber групата на съседите. © 2026</p>
+  </div>
+</footer>
+
+<script>
+  // scroll reveal
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
+  document.querySelectorAll('.rev').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
